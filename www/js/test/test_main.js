@@ -60,7 +60,7 @@ function buildTests()
 	[
 		function(testRunner)
 		{
-			
+			throw "Test code not implemented."
 		}
 	]));
     
@@ -95,8 +95,10 @@ function buildTests()
 //			console.log("After callback.");
 //		}
 //	]));
+
+    itemTests = buildItemTests();
 	
-	return new TestSuite("All tests", [testCollection], beforeTest, afterTest);
+	return new TestSuite("All tests", [testCollection, itemTests], beforeTest, afterTest);
 }
 
 // Called before every test.

@@ -1,9 +1,10 @@
 function initApp(){              
 	document.addEventListener("deviceready", onDeviceReady, true);
 	
+	// Disable this if not testing.
 	//initTesting();
 }
-   
+
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value 
   

@@ -27,3 +27,18 @@ DemoApp.Item = function() {
     // UNIX timestamp.
     this.timestamp = 0;
 }
+
+/**
+ * Constructs an item error object with the specified code and message.
+ *
+ * @param errCode       Error code.
+ * @param message       Error mesasge.
+ */
+DemoApp.ItemError = function(errCode, message) {
+    this.code = errCode;
+    this.message = message;
+}
+
+DemoApp.ItemError.prototype.toString = function() {
+    return "Error " + this.code + ": " + this.message;
+}

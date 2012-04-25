@@ -14,13 +14,17 @@ function buildItemTests()
             item.name = "Dummy Item";
             item.phone = "12345678";
             
-            if (itemController.addItem(item) == -1)
-            {
-                // Location error expected.
-                return;
-            }
+            var onSuccess = testRunner.createErrorCallback("Didn't catch empty location.");
             
-            throw "Didn't catch empty location";
+            var onError = testRunner.createCallback(function(itemErr)
+            {
+                throw itemErr.toString();
+            });
+            
+            itemController.addItem(item, onSuccess, onError);
+            
+            // Wait for callbacks.
+            return false;
 		}
 	]));
 	
@@ -36,13 +40,17 @@ function buildItemTests()
             item.name = "";
             item.phone = "12345678";
             
-            if (itemController.addItem(item) == -2)
-            {
-                // Name error expected.
-                return;
-            }
+            var onSuccess = testRunner.createErrorCallback("Didn't catch empty name.");
             
-            throw "Didn't catch empty name";
+            var onError = testRunner.createCallback(function(itemErr)
+            {
+                throw itemErr.toString();
+            });
+            
+            itemController.addItem(item, onSuccess, onError);
+            
+            // Wait for callbacks.
+            return false;
 		}
 	]));
 	
@@ -60,13 +68,17 @@ function buildItemTests()
             item.mobile = "";
             item.email = "";
             
-            if (itemController.addItem(item) == -3)
-            {
-                // Missing contact info error expected.
-                return;
-            }
+            var onSuccess = testRunner.createErrorCallback("Didn't catch missing contact info.");
             
-            throw "Didn't catch missing contact info";
+            var onError = testRunner.createCallback(function(itemErr)
+            {
+                throw itemErr.toString();
+            });
+            
+            itemController.addItem(item, onSuccess, onError);
+            
+            // Wait for callbacks.
+            return false;
 		}
 	]));
 	
@@ -77,17 +89,23 @@ function buildItemTests()
 			var item = new DemoApp.Item();
             var itemController = new DemoApp.ItemController();
             
-            // Set minimum data, except contact info.
+            // Set minimum data.
             item.location = "Home";
             item.name = "Dummy Item";
             item.description = "Test item.";
             item.phone = "12345678";
             
-            var itemId = itemController.addItem(item);
-            if (itemId < 0)
+            var onSuccess = testRunner.createNoOpCallback();
+            
+            var onError = testRunner.createCallback(function(itemErr)
             {
-                throw "Item failed to add. Error code: " + itemId;
-            }
+                throw itemErr.toString();
+            });
+            
+            itemController.addItem(item, onSuccess, onError);
+            
+            // Wait for callbacks.
+            return false;
 		}
 	]));
 	

@@ -96,7 +96,7 @@ function buildTests()
 //		}
 //	]));
 
-    itemTests = buildItemTests();
+    var itemTests = buildItemTests();
 	
 	return new TestSuite("All tests", [testCollection, itemTests], beforeTest, afterTest);
 }

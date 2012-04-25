@@ -17,36 +17,49 @@ DemoApp.ItemDBController = function() {
  * Adds the specified item.
  *
  * @param item      Item object to add.
- * @param onSuccess (Callback) Item was added successfully, first parameter is
+ * @param onSuccess (Callback) Item was added successfully. First parameter is
  *                  item ID.
- * @param onError   (Callback) Failed to add item. First parameter is an Error
- *                  object with the error message.
- * @returns         Item ID on success, or a negative number on error.
- *                  -1 on invalid location,
- *                  -2 on invalid name,
- *                  -3 if missing contact information (phone or email)
+ * @param onError   (Callback) Failed to add item. First parameter is a
+ *                  SQLError object from PhoneGap.
  */
-DemoApp.ItemDBController.prototype.addItem = function(item, onSuccess, onError) {
+DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
     // Not implemented.
-    onError(new Error("Not implemented"));
+    setTimeout(function()
+    {
+        onError(new DemoApp.ItemError(-100, "Not implemented"));
+    }, 10);
 }
 
 /**
  * Gets the item with the specified ID.
  *
  * @param itemId    Item ID.
- * @returns         Item object, or -1 on invalid id.
+ * @param onSuccess (Callback) Item was found. First parameter is the item
+ *                  object.
+ * @param onError   (Callback) Failed to get item. First parameter is a
+ *                  SQLError object from PhoneGap.
  */
-DemoApp.ItemDBController.prototype.getItem = function(itemId) {
-    return -1;
+DemoApp.ItemDBController.prototype.getItem = function(itemId, onSuccess, onError) {
+    // Not implemented.
+    setTimeout(function()
+    {
+        onError(new DemoApp.ItemError(-100, "Not implemented"));
+    }, 10);
 }
 
 /**
  * Gets a list of items.
  *
  * @param location  (Optional) Filter by location.
- * @returns         An array of Item objects. May be empty if none found.
+ * @param onSuccess (Callback) Query successful. First parameter is an array
+ *                  with item object. This array still may be empty.
+ * @param onError   (Callback) Query failed. First parameter is a SQLError
+ *                  object from PhoneGap.
  */
-DemoApp.ItemDBController.prototype.list = function(location) {
-    return new Array();
+DemoApp.ItemController.prototype.list = function(location, onSuccess, onError) {
+    // Not implemented.
+    setTimeout(function()
+    {
+        onError(new DemoApp.ItemError(-100, "Not implemented"));
+    }, 10);
 }

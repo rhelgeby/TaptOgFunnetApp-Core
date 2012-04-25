@@ -1,4 +1,5 @@
 // Tapt og funnet-App
+// Type: Controller
 // itemcontroller.js
 
 if (typeof DemoApp == "undefined") {

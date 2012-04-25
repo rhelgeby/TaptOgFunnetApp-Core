@@ -18,7 +18,13 @@ function buildItemTests()
             
             var onError = testRunner.createCallback(function(itemErr)
             {
-                throw itemErr.toString();
+                if (itemErr.code != DemoApp.ItemError.INVALID_LOCATION)
+                {
+                    // Something else failed.
+                    throw itemErr.toString();
+                }
+                
+                // Success.
             });
             
             itemController.addItem(item, onSuccess, onError);
@@ -44,7 +50,13 @@ function buildItemTests()
             
             var onError = testRunner.createCallback(function(itemErr)
             {
-                throw itemErr.toString();
+                if (itemErr.code != DemoApp.ItemError.INVALID_NAME)
+                {
+                    // Something else failed.
+                    throw itemErr.toString();
+                }
+                
+                // Success.
             });
             
             itemController.addItem(item, onSuccess, onError);
@@ -72,7 +84,13 @@ function buildItemTests()
             
             var onError = testRunner.createCallback(function(itemErr)
             {
-                throw itemErr.toString();
+                if (itemErr.code != DemoApp.ItemError.INVALID_CONTACT_INFO)
+                {
+                    // Something else failed.
+                    throw itemErr.toString();
+                }
+                
+                // Success.
             });
             
             itemController.addItem(item, onSuccess, onError);

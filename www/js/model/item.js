@@ -1,4 +1,5 @@
 // Tapt og funnet-App
+// Type: Model
 // item.js
 
 if (typeof DemoApp == "undefined") {
@@ -8,6 +9,7 @@ if (typeof DemoApp == "undefined") {
 DemoApp.Item = function() {
     // City name.
     this.location = "";
+    
     this.name = "";
     this.imageUrl = "";
     this.description = "";
@@ -40,5 +42,11 @@ DemoApp.ItemError = function(errCode, message) {
 }
 
 DemoApp.ItemError.prototype.toString = function() {
-    return "Error " + this.code + ": " + this.message;
+    return "ItemError " + this.code + ": " + this.message;
 }
+
+// Error codes:
+DemoApp.ItemError.INVALID_LOCATION = 1;
+DemoApp.ItemError.INVALID_NAME = 2;
+DemoApp.ItemError.INVALID_CONTACT_INFO = 3;
+DemoApp.ItemError.INVALID_ID = 4;

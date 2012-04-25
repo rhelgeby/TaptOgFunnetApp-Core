@@ -1,4 +1,5 @@
 // Tapt og funnet-App
+// Type: Database controller
 // itemdbcontroller.js
 
 if (typeof DemoApp == "undefined") {

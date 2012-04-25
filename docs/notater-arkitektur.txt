@@ -1,0 +1,22 @@
+arkitekturvalg: mvc
+
+- alle filene må legges til i headeren i index.html. går greit siden det bare er
+  en side.
+- vurderte å se på RequireJS, men det blir for tidkrevende
+
+
+gjenstand:
+model
+    - value object for gjenstand
+controller
+    - CRUD
+    - få filtrert liste over gjenstander
+dbcontroller
+    - klargjøre DB
+    - CRUD
+view (logikk for view)
+    - lage
+    - vise
+
+TDD:
+- CRUD-operasjoner på DB.

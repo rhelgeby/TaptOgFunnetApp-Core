@@ -24,20 +24,20 @@ DemoApp.ItemDBController = function() {
  *                  SQLError object from PhoneGap.
  */
 DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
-	var db = window.openDatabase("items", "1.0", "items", 1000000);
+	var db = window.openDatabase("item", "1.0", "item", 1000000);
 		db.transaction(createAndAdd, function(){
 									//success. wat do?
 									},
 									onError);
 	
 	var createAndAdd = function(tx) {
-		tx.executeSQL("DROP TABLE IF EXISTS ITEMS");
-		tx.executeSQL("CREATE TABLE IF NOT EXISTS ITEMS (" +
+		tx.executeSQL("DROP TABLE IF EXISTS ITEM");
+		tx.executeSQL("CREATE TABLE IF NOT EXISTS ITEM (" +
 						"id INTEGER PRIMARY KEY AUTOINCREMENT ASC, name TEXT, " +
 						"loc TEXT, pic TEXT, desc TEXT, phone DOUBLE, " +
 						"email TEXT, notifyEmail TEXT, notifySMS TEXT, " +
-						"notifyAlert TEXT, lng TEXT, lat TEXT, time DATE)");
-		tx.executeSQL("INSERT INTO ITEMS (name, loc, pic, desc, phone, " +
+						"notifyAlert TEXT, lng TEXT, lat TEXT, time INTEGER)");
+		tx.executeSQL("INSERT INTO ITEM (name, loc, pic, desc, phone, " +
 						"email, notifyEmail, notifySMS, notifyAlert, lng, lat, time) " +
 						"VALUES (" + item.name + ", " + item.location + ", " +
 						item.imageURL + ", " + item.description + ", " + item.phone

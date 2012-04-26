@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="js/controller/|js/test/|js/model/|js/" kind="src" path="www"/>
+	<classpathentry excluding="controller/|test/|model/" kind="src" path="www/js"/>
+	<classpathentry kind="src" path="www/js/controller"/>
+	<classpathentry kind="src" path="www/js/model"/>
+	<classpathentry kind="src" path="www/js/test"/>
+	<classpathentry kind="con" path="org.eclipse.wst.jsdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

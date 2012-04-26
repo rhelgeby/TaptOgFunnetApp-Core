@@ -36,7 +36,7 @@ DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
 						"id INTEGER PRIMARY KEY AUTOINCREMENT ASC, name TEXT, " +
 						"loc TEXT, pic TEXT, desc TEXT, phone DOUBLE, " +
 						"email TEXT, notifyEmail TEXT, notifySMS TEXT, " +
-						"notifyAlert TEXT, lng TEXT, lat TEXT, time DATE)");
+						"notifyAlert TEXT, lng TEXT, lat TEXT, time INTEGER)");
 		tx.executeSQL("INSERT INTO ITEMS (name, loc, pic, desc, phone, " +
 						"email, notifyEmail, notifySMS, notifyAlert, lng, lat, time) " +
 						"VALUES (" + item.name + ", " + item.location + ", " +

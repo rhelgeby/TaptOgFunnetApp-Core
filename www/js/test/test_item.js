@@ -127,5 +127,32 @@ function buildItemTests()
 		}
 	]));
 	
+	itemTests.addTest(new TestCase("Add item to DB", "index.html",
+	[
+		function(testRunner)
+		{
+			var item = new DemoApp.Item();
+            var itemController = new DemoApp.ItemDBController();
+            
+            // Set minimum data.
+            item.location = "Home";
+            item.name = "Dummy Item";
+            item.description = "Test item.";
+            item.phone = "12345678";
+            
+            var onSuccess = testRunner.createNoOpCallback();
+            
+            var onError = testRunner.createCallback(function(err)
+            {
+                throw err.message();
+            });
+            
+            itemDBController.addItem(item, onSuccess, onError);
+            
+            // Wait for callbacks.
+            return false;
+		}
+	]));
+	
 	return itemTests;
 }

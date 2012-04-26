@@ -24,10 +24,37 @@ DemoApp.ItemDBController = function() {
  *                  SQLError object from PhoneGap.
  */
 DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
-    // Not implemented.
+	var db = window.openDatabase("items", "1.0", "items", 1000000);
+		db.transaction(createAndAdd, function(){
+									//success. wat do?
+									},
+									onError);
+	
+	var createAndAdd = function(tx) {
+		tx.executeSQL("DROP TABLE IF EXISTS ITEMS");
+		tx.executeSQL("CREATE TABLE IF NOT EXISTS ITEMS (" +
+						"id INTEGER PRIMARY KEY AUTOINCREMENT ASC, name TEXT, " +
+						"loc TEXT, pic TEXT, desc TEXT, phone DOUBLE, " +
+						"email TEXT, notifyEmail TEXT, notifySMS TEXT, " +
+						"notifyAlert TEXT, lng TEXT, lat TEXT, time DATE)");
+		tx.executeSQL("INSERT INTO ITEMS (name, loc, pic, desc, phone, " +
+						"email, notifyEmail, notifySMS, notifyAlert, lng, lat, time) " +
+						"VALUES (" + item.name + ", " + item.location + ", " +
+						item.imageURL + ", " + item.description + ", " + item.phone
+						+ ", " + item.email + ", " + item.notifyEmail + ", " + 
+						item.notifySMS + ", " + item.notifyAlert + ", " + item.longitude
+						+ ", " + item.latitude + ", " + item.timestamp + ")");
+	};
+	
+	// koble til db (bruk onError, lag eget callback for onSuccess selv)
+	//
+	// bygg opp streng med spørring
+	// send spørring (i onsuccess)
+	// bruk onerror hvis spørring går galt
+	
     setTimeout(function()
     {
-        onError(new DemoApp.ItemError(-100, "Not implemented"));
+        onError(new DemoApp.ItemError(-100, "Add item failed"));
     }, 10);
 }
 

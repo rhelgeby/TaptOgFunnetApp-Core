@@ -18,17 +18,13 @@ DemoApp.ItemDBController = function() {
  * Adds the specified item.
  *
  * @param item      Item object to add.
- * @param onSuccess (Callback) Item was added successfully. First parameter is
- *                  item ID.
+ * @param onSuccess (Callback) Item was added successfully.
+ * 					TODO: First parameter is item ID.
  * @param onError   (Callback) Failed to add item. First parameter is a
  *                  SQLError object from PhoneGap.
  */
 DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
-	var db = window.openDatabase("item", "1.0", "item", 1000000);
-		db.transaction(createAndAdd, function(){
-									//success. wat do?
-									},
-									onError);
+	this.db.transaction(createAndAdd, function(){}, onError);
 	
 	var createAndAdd = function(tx) {
 		tx.executeSQL("DROP TABLE IF EXISTS ITEM");
@@ -52,10 +48,6 @@ DemoApp.ItemController.prototype.addItem = function(item, onSuccess, onError) {
 	// send spørring (i onsuccess)
 	// bruk onerror hvis spørring går galt
 	
-    setTimeout(function()
-    {
-        onError(new DemoApp.ItemError(-100, "Add item failed"));
-    }, 10);
 }
 
 /**
@@ -83,7 +75,7 @@ DemoApp.ItemDBController.prototype.getItem = function(itemId, onSuccess, onError
 		onSuccess(item);
     }
 	
-	this.db.transaction(getData, txSuccess, onError);
+	this.db.transaction(getData, function(){}, onError);
 }
 
 /**
